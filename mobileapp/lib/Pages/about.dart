@@ -2,18 +2,37 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:mobileapp/Pages/home.dart';
 
-class AboutPage extends StatelessWidget {
-  const AboutPage({super.key});
+class AboutPage extends StatefulWidget {
+   AboutPage({super.key});
+
+  @override
+  State<AboutPage> createState() => _AboutPageState();
+}
+
+class _AboutPageState extends State<AboutPage> {
+  int _selectedIndex = 0;
+
+  void _navigateBottomBar(int index){
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  final List _pages = [
+    HomePage(),
+    AboutPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // ignore: prefer_const_constructors
-        title: Text("About Page"),
-        backgroundColor: Colors.amber,
-      ),
+      // appBar: AppBar(
+      //   // ignore: prefer_const_constructors
+      //   title: Text("About Page"),
+      //   backgroundColor: Colors.amber,
+      // ),
       // ignore: prefer_const_constructors
       // drawer: Drawer(
       //   backgroundColor: Color.fromARGB(255, 74, 146, 56),
@@ -39,21 +58,19 @@ class AboutPage extends StatelessWidget {
       //     ],
       //   ),
       // ),
-
+      
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _navigateBottomBar,
         items: [
           BottomNavigationBarItem(icon:Icon(Icons.home),
             label:'Home' 
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Setting' ,  onTap:()=>{
-            
-          }),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Setting'),
           BottomNavigationBarItem(icon: Icon(Icons.info), label: 'About')
         ],
       ),
-        body:Center(child: ElevatedButton(onPressed: (){
-          Navigator.pushNamed(context, '/home');
-        },child: Text('Home Page'),),)
+        body:_pages[_selectedIndex]
     );
   }
 }

@@ -1,26 +1,20 @@
 // ignore_for_file: sort_child_properties_last, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:mobileapp/Pages/about.dart';
-import 'package:mobileapp/Pages/home.dart';
+import 'package:mobileapp/Pages/todo_page.dart';
 
 void main() {
-  runApp(MyWidget());
+  runApp(const MyApp());
 }
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
-      routes: {
-        '/home':(context) => HomePage(),
-        '/about':(context) => AboutPage(),
-      },
+      home: ToDoPage(),
     );
-  
   }
 }
