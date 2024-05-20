@@ -33,7 +33,7 @@ class _AboutPageState extends State<AboutPage> {
       //   title: Text("About Page"),
       //   backgroundColor: Colors.amber,
       // ),
-      // ignore: prefer_const_constructors
+      
       // drawer: Drawer(
       //   backgroundColor: Color.fromARGB(255, 74, 146, 56),
       //   child: Column(
